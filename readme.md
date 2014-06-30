@@ -17,21 +17,33 @@ For one country, we have the following type of specifications:
 
 The first part of this exercice is to find a way to implement these specifications in order to be the most flexible for future requirements.
 
-Lets say that the header is:
+Lets say that the collecting society gives us the following columns format for the declaration:
 ```ruby
-["Artists", "Track Title and Version"]
-# Adhoc specifications
-# - "Track Title and Version" should hold version between () if any
-# - "Artists" should hold names of artist separated by ','
+[
+  "Artists", # should hold names of artist separated by ','
+  "Track Title and Version" # should hold version between () if any
+]
 ```
+
+Keep in mind that a spanish collecting society could ask us the following header
+
+```ruby
+[
+  "Artists", # should hold names of artist separated by 'y' ('and' in english)
+  "Track Title and Version" # should hold title and version separated by '-' if any version
+]
+```
+
+So your solution should be flexible.
+
 
 Lets say that the strategy should hold the following data requirements:
 - One should not declare tracks that have 'VARIOUS ARTISTS' as one of their artist.
 - One should not declare tracks that have 'karaoke' as their library type.
 
 In order to solve that, you may have to define:
-- a way of getting the data given the columns specification.
-- a way to store the data requirements
+- a way of storing the column mapping and getting the correct data given the correct formatting
+- a way to store the data requirements (ie: validations)
 
 Lets say that track respond to question #include_various_artists? and #karaoke?.
 
