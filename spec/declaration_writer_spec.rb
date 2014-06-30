@@ -17,11 +17,13 @@ describe DeclarationWriter do
     it 'should return the header' do
       expect(results).to include ['Artists', 'Track Title and Version']
     end
-    it 'should include the first track' do
+    it 'should include valid track' do
       expect(results).to include ['Artist 1', 'Track 1 (Version)']
     end
-    it 'should not include the "invalid data" tracks' do
+    it 'should not include the karaoke tracks' do
       expect(results).to_not include ['Artist 2', 'Track 2 (Version)']
+    end
+    it 'should not include tracks with Various Artists' do
       expect(results).to_not include ['VARIOUS ARTISTS', 'Track 3 (Version)']
     end
   end
