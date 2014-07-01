@@ -19,7 +19,7 @@ The first part of this exercice is to find a way to implement these specificatio
 
 Lets say that the collecting society gives us the following columns format for the declaration:
 ```ruby
-[
+usa = [
   "Artists", # should hold names of artist separated by ','
   "Track Title and Version" # should hold version between () if any
 ]
@@ -47,15 +47,42 @@ In order to solve that, you may have to define:
 
 Lets say that track respond to question #include_various_artists? and #karaoke?.
 
-#### Bonus
-Is your solution working if the required header is (the meaning of columns - ie. adhoc spec - should be obvious):
+### Others examples of requirements
+#### ColumnSpecification 2
+```ruby
+belgium = [
+  "Artist Name 1", # first artist's name
+  "Artist Name 2", # second artist's name
+  "Track Title"
+]
+```
+#### ColumnSpecification 3
+```ruby
+france = [ "Artists - Track Title (Version)" ]
+```
+#### ColumnSpecification 4
+Lets say we have releases attached to a track.
+```ruby
+class Release
+  attr_accessor :title
+end
+```
+For one track, we need to declare all the releases, one per line.
 
 ```ruby
-["Artist Name 1", "Artist Name 2", "Track Title"]
+uk = [
+  "Artists",
+  "Track Title And Version",
+  "Release Title"
+]
 ```
 
-## Second step
+### Extra
+* Can we list our validation rules ?
+* Can we list all our values types ?
+* Will the list of the rules and values will explode over time?
 
+## Second step
 The second part of this exercice, is to use this implementation to declare our catalog.
 
 We declare tracks ...
@@ -65,6 +92,6 @@ We declare tracks ...
   This part is meant to be abstracted. So you can define a stub method on the track, that given a country and a track, return true or false.
 
 Create a class that takes a strategy and declare our tracks.
-You can simplify the problem as you want.
+Think flexible and reusable!
 
-The end goal is to find an implementation of DeclarationWriter::declare(...) for the given spec in declaration_writer_spec.rb.
+The end goal is to find an real implementation of declaration_writer_spec.rb.

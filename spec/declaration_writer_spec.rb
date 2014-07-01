@@ -2,17 +2,18 @@ require 'declaration_writer'
 
 describe DeclarationWriter do
   describe '::declare' do
-    let(:arguments){ {} } # what should be the arguments?
-
+    let(:strategy){} # your strategy here
     let(:tracks) do
       tracks = []
       tracks << Track.new(title: 'Track 1', version: 'Version', karaoke: false, artists: [Artist.new('Artist 1')])
       tracks << Track.new(title: 'Track 2', version: 'Version', karaoke: true, artists: [Artist.new('Artist 2')])
       tracks << Track.new(title: 'Track 3', version: 'Version', karaoke: false, artists: [Artist.new('VARIOUS ARTISTS')])
-      return tracks
+      tracks
     end
 
-    subject(:results){ DeclarationWriter.declare(arguments) }
+    subject(:results){
+      DeclarationWriter.new(strategy) \
+      .declare_tracks(tracks) }
 
     it 'should return the header' do
       expect(results).to include ['Artists', 'Track Title and Version']

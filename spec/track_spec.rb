@@ -12,7 +12,7 @@ describe Track do
 
   describe '#has_various_artists?' do
     context 'when having VARIOUSARTISTS in one of the artist names' do
-      subject { Track.new(title: "Title", artists: [Artist.new("VARIOUSARTISTS")]) }
+      subject { Track.new(title: "Title", artists: [Artist.new("VARIOUS ARTISTS")]) }
       its(:has_various_artists?){ should be_true }
     end
 

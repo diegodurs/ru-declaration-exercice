@@ -12,6 +12,14 @@ class Track
     end
   end
 
+  def title_and_version
+    if version.to_s == ''
+      title
+    else
+      "#{title} (#{version})"
+    end
+  end
+
   def has_various_artists?
     artists.any? do |artist|
       artist.name =~ /various(.?)artist/i
@@ -19,6 +27,6 @@ class Track
   end
 
   def karaoke?
-    @karaoke
+    !!@karaoke
   end
 end

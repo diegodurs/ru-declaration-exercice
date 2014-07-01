@@ -1,11 +1,21 @@
 class DeclarationWriter
 
-  # Second Step Here
-  def self.declare(options = {})
-    # Expected results for the data in the spec
-    [
+  def initialize(strategy)
+    @strategy = strategy
+  end
+
+  def declare_tracks(tracks)
+    [ # fake results to change with your implementation
       ['Artists', 'Track Title and Version'],
-      ['Artist 1', 'Track 1 (Version)']
+      row(tracks[0])
+    ]
+  end
+
+  private
+  def row(track)
+    [
+      track.artists.map(&:name).join(','),
+      track.title_and_version
     ]
   end
 end
